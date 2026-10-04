@@ -114,9 +114,12 @@ jobs:
           cache: maven
 
       - name: Run OWASP Dependency-Check
+        env:
+          NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
         run: |
           mvn -B org.owasp:dependency-check-maven:check \
               -DfailBuildOnCVSS=7 \
+              -DnvdApiKey="$NVD_API_KEY" \
               -DsuppressionFile=dependency-check-suppressions.xml || true
         # Remove "|| true" once you have suppressions in place and want hard fails
 

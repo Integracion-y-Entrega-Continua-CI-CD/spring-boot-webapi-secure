@@ -82,7 +82,9 @@ jobs:
           distribution: temurin
           cache: maven
       - name: Run Dependency-Check
-        run: mvn -B org.owasp:dependency-check-maven:check -DfailBuildOnCVSS=7 || true
+        env:
+          NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
+        run: mvn -B org.owasp:dependency-check-maven:check -DfailBuildOnCVSS=7 -DnvdApiKey="$NVD_API_KEY" || true
       - uses: actions/upload-artifact@v4
         if: always()
         with:
