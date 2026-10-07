@@ -1,10 +1,8 @@
 name: Security - Semgrep
 
+# Solo ejecucion manual: el escaneo automatico de Semgrep vive en
+# ci-sec.yml, ci-cd-sec.yml y ci-sec-nightly.yml (junto al Quality Gate).
 on:
-  push:
-    branches: [feature/**', 'bugfix/**', 'hotfix/**']
-  pull_request:
-    branches: [main, develop]
   workflow_dispatch:
 
 permissions:
