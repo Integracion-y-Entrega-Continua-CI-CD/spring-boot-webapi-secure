@@ -3,3 +3,6 @@ target/
 *.iml
 .vscode/
 *.log
+
+# Reportes locales de seguridad (evidencias del laboratorio)
+reports/
